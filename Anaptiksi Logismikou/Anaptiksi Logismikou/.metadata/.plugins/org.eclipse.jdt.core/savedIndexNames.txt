@@ -1,5 +1,0 @@
-INDEX VERSION 1.126+C:\Users\Aris\Desktop\Anaptiksi Logismikou\.metadata\.plugins\org.eclipse.jdt.core
-1930693429.index
-1050871288.index
-573965212.index
-3054815172.index
