@@ -10,7 +10,6 @@ Implemention of a prototype tracking system of a trunk network. The overall syst
 The technologies:
 
 • Monitoring IP traffic (IP traffic monitoring)
-
 • Linux Interface Configuration
 
 • Java SDK
