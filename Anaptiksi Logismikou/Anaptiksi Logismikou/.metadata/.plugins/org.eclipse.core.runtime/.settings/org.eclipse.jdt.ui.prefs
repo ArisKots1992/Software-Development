@@ -1,0 +1,19 @@
+content_assist_lru_history=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><history maxLHS\="100" maxRHS\="10"><lhs name\="android.content.Context"><rhs name\="aris.kots.adminclientapplication.TabMenu"/><rhs name\="aris.kots.adminclientapplication.MainActivity"/><rhs name\="aris.kots.adminclientapplication.Register"/></lhs><lhs name\="android.content.ComponentCallbacks"><rhs name\="aris.kots.adminclientapplication.DeviceInterfaces"/><rhs name\="aris.kots.adminclientapplication.InsertMaliciousAdminTab"/><rhs name\="aris.kots.adminclientapplication.DeviceInterfacesTab"/><rhs name\="aris.kots.adminclientapplication.DeleteUserAdminTab"/><rhs name\="aris.kots.adminclientapplication.ArisTabCustom"/></lhs><lhs name\="android.view.View$OnCreateContextMenuListener"><rhs name\="aris.kots.adminclientapplication.DeviceInterfaces"/><rhs name\="aris.kots.adminclientapplication.InsertMaliciousAdminTab"/><rhs name\="aris.kots.adminclientapplication.DeviceInterfacesTab"/><rhs name\="aris.kots.adminclientapplication.DeleteUserAdminTab"/><rhs name\="aris.kots.adminclientapplication.ArisTabCustom"/></lhs><lhs name\="android.support.v4.app.Fragment"><rhs name\="aris.kots.adminclientapplication.DeviceInterfaces"/><rhs name\="aris.kots.adminclientapplication.InsertMaliciousAdminTab"/><rhs name\="aris.kots.adminclientapplication.DeviceInterfacesTab"/><rhs name\="aris.kots.adminclientapplication.DeleteUserAdminTab"/><rhs name\="aris.kots.adminclientapplication.ArisTabCustom"/></lhs><lhs name\="org.ksoap2.serialization.KvmSerializable"><rhs name\="org.ksoap2.serialization.SoapObject"/></lhs><lhs name\="org.ksoap2.serialization.AttributeContainer"><rhs name\="org.ksoap2.serialization.SoapObject"/></lhs><lhs name\="org.ksoap2.serialization.HasAttributes"><rhs name\="org.ksoap2.serialization.SoapObject"/></lhs><lhs name\="org.ksoap2.serialization.SoapObject"><rhs name\="org.ksoap2.serialization.SoapObject"/></lhs><lhs name\="org.ksoap2.SoapEnvelope"><rhs name\="org.ksoap2.serialization.SoapSerializationEnvelope"/></lhs><lhs name\="org.ksoap2.serialization.SoapSerializationEnvelope"><rhs name\="org.ksoap2.serialization.SoapSerializationEnvelope"/></lhs><lhs name\="org.ksoap2.transport.Transport"><rhs name\="org.ksoap2.transport.HttpTransportSE"/></lhs><lhs name\="org.ksoap2.transport.HttpTransportSE"><rhs name\="org.ksoap2.transport.HttpTransportSE"/></lhs><lhs name\="aris.kots.adminclientapplication.AvailableNodes"><rhs name\="aris.kots.adminclientapplication.AvailableNodes"/></lhs><lhs name\="org.ksoap2.serialization.PropertyInfo"><rhs name\="org.ksoap2.serialization.PropertyInfo"/></lhs><lhs name\="java.lang.CharSequence"><rhs name\="java.lang.String"/></lhs><lhs name\="aris.kots.adminclientapplication.StatisticalReports"><rhs name\="aris.kots.adminclientapplication.StatisticalReports"/></lhs></history>
+content_assist_number_of_computers=12
+content_assist_proposals_background=255,255,255
+content_assist_proposals_foreground=0,0,0
+eclipse.preferences.version=1
+fontPropagated=true
+org.eclipse.jdt.ui.editor.tab.width=
+org.eclipse.jdt.ui.formatterprofiles.version=12
+org.eclipse.jdt.ui.javadoclocations.migrated=true
+org.eclipse.jdt.ui.text.code_templates_migrated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.text.templates_migrated=true
+org.eclipse.jface.textfont=1|Courier New|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Courier New;
+proposalOrderMigrated=true
+spelling_locale_initialized=true
+tabWidthPropagated=true
+useAnnotationsPrefPage=true
+useQuickDiffPrefPage=true

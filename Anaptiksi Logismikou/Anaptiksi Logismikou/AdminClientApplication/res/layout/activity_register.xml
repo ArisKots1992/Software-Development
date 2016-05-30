@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Registration"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.35" >
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:ems="12"
+            android:hint="Username"
+            android:lines="1"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/username"
+            android:layout_centerHorizontal="true"
+            android:ems="12"
+            android:hint="Password"
+            android:inputType="textPassword" />
+		<EditText
+            android:id="@+id/repeat_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/password"
+            android:layout_centerHorizontal="true"
+            android:ems="12"
+            android:hint="Password Confirmation"
+            android:inputType="textPassword" />
+        <Button
+            android:id="@+id/Add_Device"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="left|bottom"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/custom_button"
+            android:scaleType="centerCrop"
+            android:text="Add Device" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center|top"
+        android:layout_weight="0.35" >
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center|top"
+            android:layout_above="@+id/update_photo"
+            android:layout_alignParentTop="true" >
+
+        	<LinearLayout
+        	    android:id="@+id/Device"
+        	    android:layout_width="wrap_content"
+        	    android:layout_height="wrap_content"
+        	    android:gravity="center|top"
+        	    android:layout_gravity="center|top"
+        	    android:orientation="vertical" >
+        	</LinearLayout>
+    	</ScrollView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.15" >
+
+        <Button
+            android:id="@+id/Register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/custom_button"
+            android:scaleType="centerCrop"
+            android:text="Register" />
+
+    </RelativeLayout>
+</LinearLayout>

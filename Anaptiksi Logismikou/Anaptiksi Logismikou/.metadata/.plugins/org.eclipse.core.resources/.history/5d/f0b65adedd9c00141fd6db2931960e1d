@@ -1,0 +1,206 @@
+package aris.kots.adminclientapplication;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.util.Log;
+
+public class DBAdapter {
+
+    private static final String TAG = "DBAdapter";
+    
+    private static final String DATABASE_NAME = "MyDatabase";
+    /****************************************************************/
+    private static final String TABLE_REMEMBER_LOGIN = "remember_login";
+    private static final String KEY_USERNAME = "username";
+    private static final String KEY_PASSWORD = "password";
+    private static final String KEY_ISADMIN = "isAdmin";
+    /****************************************************************/
+    private static final String TABLE_NOTES = "notes";
+    private static final String KEY_NOTE_ID = "note_id";
+    private static final String KEY_EXHIBITION_NAME = "exhibition_name";
+    private static final String KEY_BUSINESS_CARD = "business_card";
+    private static final String KEY_HAND_WRITE_1 = "hand_write_1";
+    private static final String KEY_HAND_WRITE_2 = "hand_write_2";
+    private static final String KEY_SOUND = "sound";
+    private static final String KEY_DATE = "mydate";
+    private static final String KEY_TITLE = "title";
+    private static final String KEY_MAIN_TEXT = "main_text";
+    private static final String KEY_THUMBNAIL_SMALL = "thumbnail_small";
+    private static final String KEY_THUMBNAIL_BIG = "thumbnail_big";
+
+    /****************************************************************/
+    private static final String TABLE_NOTES_PHOTOS = "notes_photos";
+    private static final String KEY_PHOTO = "photo";
+
+    
+    private static final int DATABASE_VERSION = 2;
+
+    private static final String DATABASE_CREATE1 =
+        "create table if not exists " + TABLE_REMEMBER_LOGIN + " (username VARCHAR primary key, password VARCHAR, isAdmin VARCHAR);";
+    
+    private static final String DATABASE_CREATE2 =
+            "create table if not exists " + TABLE_NOTES + 
+            " (note_id integer primary key autoincrement, exhibition_name VARCHAR, business_card VARCHAR, hand_write_1 VARCHAR,"+
+            " hand_write_2 VARCHAR, sound VARCHAR,mydate VARCHAR, title VARCHAR, main_text VARCHAR, thumbnail_small VARCHAR, thumbnail_big VARCHAR);";  
+
+    private static final String DATABASE_CREATE3 =
+            "create table if not exists " + TABLE_NOTES_PHOTOS + " (exhibition_name VARCHAR, note_id integer, photo VARCHAR);"; 
+    
+    private final Context context;    
+
+    private DatabaseHelper DBHelper;
+    private SQLiteDatabase db;
+
+    public DBAdapter(Context ctx) 
+    {
+        this.context = ctx;
+        DBHelper = new DatabaseHelper(context);
+    }
+        
+    private static class DatabaseHelper extends SQLiteOpenHelper 
+    {
+        DatabaseHelper(Context context) 
+        {
+            super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        }
+
+        @Override
+        public void onCreate(SQLiteDatabase db) 
+        {
+        	try {
+        		System.out.println("CREATION");
+        		db.execSQL(DATABASE_CREATE1);
+        		db.execSQL(DATABASE_CREATE2);
+        		db.execSQL(DATABASE_CREATE3);
+        	} catch (SQLException e) {
+        		e.printStackTrace();
+        	}
+        }
+        @Override
+        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) 
+        {
+            Log.w(TAG, "Upgrading database from version " + oldVersion + " to "
+                    + newVersion + ", which will destroy all old data");
+            db.execSQL("DROP TABLE IF EXISTS contacts");
+            onCreate(db);
+        }
+    }    
+
+    //---opens the database---
+    public DBAdapter open() throws SQLException 
+    {
+        db = DBHelper.getWritableDatabase();
+        return this;
+    }
+
+    //---closes the database---    
+    public void close() 
+    {
+        DBHelper.close();
+    }
+    
+    //---insert a record into the database---
+    public long insertExhibition(String name) 
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_NAME, name);
+        return db.insert(TABLE_EXHIBITIONS, null, initialValues);
+    }
+    public long insertNote(String exhibition_name,String business_card ,String hand_write_1,String hand_write_2,String sound,String mydate,
+    		String title,String main_text,String thumbnail_small,String thumbnail_big) 
+    {        
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_EXHIBITION_NAME, exhibition_name);
+        initialValues.put(KEY_BUSINESS_CARD, business_card);
+        initialValues.put(KEY_HAND_WRITE_1, hand_write_1);
+        initialValues.put(KEY_HAND_WRITE_2, hand_write_2);
+        initialValues.put(KEY_SOUND, sound);
+        initialValues.put(KEY_DATE, mydate);
+        initialValues.put(KEY_TITLE, title);
+        initialValues.put(KEY_MAIN_TEXT, main_text);
+        initialValues.put(KEY_THUMBNAIL_SMALL, thumbnail_small); 
+        initialValues.put(KEY_THUMBNAIL_BIG, thumbnail_big);
+        
+        return db.insert(TABLE_NOTES, null, initialValues);
+    }
+    public long insertPhoto(String exhibition_name, int note_id,String photo) 
+    {
+        ContentValues initialValues = new ContentValues();
+        initialValues.put(KEY_EXHIBITION_NAME, exhibition_name);
+        initialValues.put(KEY_NOTE_ID, note_id);
+        initialValues.put(KEY_PHOTO, photo);
+        
+        return db.insert(TABLE_NOTES_PHOTOS, null, initialValues);
+    }
+    //---deletes a particular record---
+    public boolean deleteExhibition(String name) 
+    {	
+        return db.delete(TABLE_EXHIBITIONS, KEY_NAME + "=?", new String[] {name}) > 0;
+    }
+    public boolean deletePhotoByName(String photo_name) 
+    {	
+        return db.delete(TABLE_NOTES_PHOTOS, KEY_PHOTO + "=?", new String[] {photo_name}) > 0;
+    }
+    public boolean deleteNote(int id) 
+    {	//Delete ALL PHOTOS
+    	db.delete(TABLE_NOTES_PHOTOS, KEY_NOTE_ID + "=?", new String[] {String.valueOf(id)});
+    	//Delete all Note
+        return db.delete(TABLE_NOTES, KEY_NOTE_ID + "=?", new String[] {String.valueOf(id)}) > 0;
+    }
+    //---retrieves all the records---
+    public Cursor getAllExhibitions() 
+    {
+        return db.query(TABLE_EXHIBITIONS, new String[] {KEY_NAME },  null, null,null,null,null );
+    }
+    public Cursor getNotes(String exhibition_name) 
+    {
+        return db.query(TABLE_NOTES, new String[] {KEY_NOTE_ID,KEY_TITLE,KEY_DATE,KEY_THUMBNAIL_BIG,KEY_THUMBNAIL_SMALL,KEY_HAND_WRITE_1 }, "exhibition_name=?", new String[]{exhibition_name},null,null,null );
+    }
+    public Cursor getNote(int id) 
+    {
+        return db.query(TABLE_NOTES, new String[] {KEY_TITLE,KEY_MAIN_TEXT,KEY_DATE,KEY_HAND_WRITE_1,KEY_HAND_WRITE_2,KEY_SOUND,KEY_BUSINESS_CARD,KEY_THUMBNAIL_BIG,KEY_THUMBNAIL_SMALL}, "note_id=?", new String[] {String.valueOf(id)},null,null,null );
+    }
+    public Cursor getPhotos(int id) 
+    {
+        return db.query(TABLE_NOTES_PHOTOS, new String[] {KEY_PHOTO}, "note_id=?", new String[] {String.valueOf(id)},null,null,null );
+    }
+    //--- update records---
+    public boolean updateNoteMainText(String NewMainText, int id) 
+    {
+        ContentValues args = new ContentValues();
+        args.put(KEY_MAIN_TEXT, NewMainText);
+        args.put(KEY_TITLE,NewMainText );
+        return db.update(TABLE_NOTES, args, KEY_NOTE_ID + "=?",  new String[] {String.valueOf(id)}) > 0;
+    }
+    //--- Number of Notes!
+    public int NumberofNotes(String exhibition_name) {
+        
+    	 Cursor c = db.query(TABLE_NOTES, new String[] {KEY_NOTE_ID}, "exhibition_name=?", new String[]{exhibition_name},null,null,null );
+        int x = c.getCount();
+        if(x>=0)	
+        	return x;
+        else
+        	return 0;
+    }
+    
+    public boolean ExistsExhibition(String name) {
+        
+        String Query = "Select * from " + TABLE_EXHIBITIONS + " where " + KEY_NAME + "="
+                + name;
+        Cursor cursor = db.rawQuery(Query, null);
+                if(cursor.getCount()<=0){
+                	return false;
+                }
+            return true;
+    }
+    public boolean deleteALL() {
+        
+        db.delete(TABLE_EXHIBITIONS, null, null);
+            return true;
+    }
+}

@@ -1,0 +1,5 @@
+package aris.kots.adminclientapplication;
+
+public class MyCustomListViewAdapter {
+
+}

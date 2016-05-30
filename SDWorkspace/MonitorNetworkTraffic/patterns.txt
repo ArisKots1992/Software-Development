@@ -1,0 +1,9 @@
+aaaaaaa
+bbbbbbb
+ccccccc
+pdf
+html
+c
+b
+b*
+http*

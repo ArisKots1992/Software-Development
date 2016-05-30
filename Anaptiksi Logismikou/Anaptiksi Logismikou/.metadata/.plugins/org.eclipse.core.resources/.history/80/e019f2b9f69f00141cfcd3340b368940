@@ -1,0 +1,26 @@
+package aris.kots.adminclientapplication;
+
+
+import android.app.Activity;
+import android.app.TabActivity;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class DeleteUserAdminTab extends Fragment {
+
+@Override
+      public View onCreateView(LayoutInflater inflater, ViewGroup container,
+              Bundle savedInstanceState) {
+          View android = inflater.inflate(R.layout.third_tab, container, false);
+          ((TextView)android.findViewById(R.id.textView)).setText("Aris");
+          
+  		  //    	Activity activity = getActivity();
+  		  //  	Toast.makeText(activity,"MPIKA",Toast.LENGTH_SHORT).show();
+          
+          return android;
+}}
