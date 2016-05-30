@@ -7,15 +7,11 @@ Implemention of a prototype tracking system of a trunk network. The overall syst
 3. Software for monitoring the statistics of network traffic through Smartphone / PDA.
 
 
-The technologies:
-
-• Monitoring IP traffic (IP traffic monitoring)
-• Linux Interface Configuration
-
-• Java SDK
-
-• Web Services
-
-• SDK Android
+The technologies:  
+• Monitoring IP traffic (IP traffic monitoring)  
+• Linux Interface Configuration  
+• Java SDK  
+• Web Services  
+• SDK Android  
 
 *Programmed in 2015*
